@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vitrine Innovative Tech</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+  <nav>
+    <img src="Picture2.png" alt="Logo" />
+    <h1>Innovative Tech</h1>
+    <div class="onglets">
+      <a href="#">Home</a>
+      <a href="#">Where we are</a>
+      <a href="#">What we do</a>
+      <a href="#">Observability</a>
+    </div>
+  </nav>
+
+  <!-- Swiper Slider -->
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="indien.png" alt="Slide 1" />
+        <div class="caption">Exploring Innovation</div>
+      </div>
+      <div class="swiper-slide">
+        <img src="1.png" alt="Slide 2" />
+        <div class="caption">Our Global Presence</div>
+      </div>
+      <div class="swiper-slide">
+        <img src="2.png" alt="Slide 3" />
+        <div class="caption">Cutting-Edge Solutions</div>
+      </div>
+      <div class="swiper-slide">
+        <img src="3.png" alt="Slide 4" />
+        <div class="caption">Tech That Empowers</div>
+      </div>
+    </div>
+
+    <!-- Arrows -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+
+  <footer>
+    <div class="logo-container">
+      <a href="https://www.devoteam.com/en-nl/the-innovative-tech-team/">
+        <img src="rouge.png" alt="Red logo" />
+      </a>
+      <a href="https://www.facebook.com/devoteam" target="_blank">
+        <img src="facebook-logo-facebook-icon-transparent-free-png.webp" alt="Facebook" id="facebook-logo" />
+      </a>
+      <a href="https://lu.linkedin.com/company/devoteam" target="_blank">
+        <img src="linkedin-logo-free-download-free-png.webp" alt="LinkedIn" id="linkedin-logo" />
+      </a>
+    </div>
+  </footer>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script>
+    const swiper = new Swiper(".swiper", {
+      loop: true,
+      grabCursor: true,
+      slidesPerView: 1,
+      spaceBetween: 30,
+      effect: "fade",
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+    });
+
+    // Fullscreen Viewer on Image Click
+    document.querySelectorAll(".swiper-slide img").forEach(img => {
+      img.addEventListener("click", () => {
+        const viewer = document.createElement("div");
+        viewer.classList.add("fullscreen-viewer");
+        viewer.innerHTML = `<img src="${img.src}" alt=""><span class="close">&times;</span>`;
+        document.body.appendChild(viewer);
+
+        viewer.querySelector(".close").onclick = () => viewer.remove();
+        viewer.onclick = e => { if (e.target === viewer) viewer.remove(); };
+      });
+    });
+  </script>
+</body>
+</html>
